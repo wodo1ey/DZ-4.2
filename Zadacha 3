@@ -12,7 +12,7 @@ int main()
 {
 	stack <float> s;
 	string sup;
-	ifstream f("C:\\test\\Zadacha_3.txt");
+	ifstream f("Zadacha_3.txt");
 	float n1, n2;
 	while (!f.eof()) {
 		f >> sup;
