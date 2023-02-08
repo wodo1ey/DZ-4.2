@@ -1,0 +1,30 @@
+//Сгенерировать список из N элементов. Список должен содержать числа от -20 до 20. Удалить из списка все числа, кратные 5. Обязательно использовать предикаты.
+
+#include <iostream>
+#include <list>
+#include <time.h>
+
+using namespace std;
+
+bool MultipleOf5 (int k) {
+	if (k % 5 == 0) return true;
+	else return false;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	list <int> l;
+	list <int>::iterator p;
+	int n;
+	cout << "Введите желаемую длинну списка: ";
+	cin >> n;
+	srand(time(0));
+	for (int i = 0; i < n; i++) l.push_back(-20 + rand() % 40);
+	for (p = l.begin(); p != l.end(); p++) cout << *p << " ";
+	cout << endl;
+	l.remove_if(MultipleOf5);
+	cout << "Из списка были удалены все элементы, кратные 5. Вот результат: ";
+	cout << endl;
+	for (p = l.begin(); p != l.end(); p++) cout << *p << " ";
+}
