@@ -1,0 +1,37 @@
+//Создать два списка (контейнер list). Вывести их на экран. 
+//Вставить первый список во второй перед элементом со значением k. Вывести второй список на экран. Использовать splice.
+
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	list <int> l1, l2;
+	list <int>::iterator p;
+	int n;
+	for (int i = 0; i < 7; i++) {
+		cin >> n;
+		l1.push_back(n);
+	}
+	for (int i = 0; i < 5; i++) {
+		cin >> n;
+		l2.push_back(n);
+	}
+	for (p = l1.begin(); p != l1.end(); p++) cout << *p << ' ';
+	cout << endl;
+	for (p = l2.begin(); p != l2.end(); p++) cout << *p << ' ';
+	cout << endl;
+	int k;
+	cout << "Введите значение элемента второго списка, перед которым нужно вставить первый список: ";
+	cin >> k;
+	for (p = l2.begin(); p != l2.end(); p++) {
+		if (*p == k) {
+			l2.splice(p, l1);
+			break;
+		}
+	}
+	for (p = l2.begin(); p != l2.end(); p++) cout << *p << ' ';
+}
