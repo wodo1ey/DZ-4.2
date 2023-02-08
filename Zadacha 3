@@ -1,0 +1,38 @@
+//Считать из текстового файла арифметическое выражение в постфиксной записи (например 5 6 3 * +). Выражение содержит знаки
+//четырёх арифметических действий. Вычислить его значение, используя для решения стек.
+
+#include <iostream>
+#include <stack>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	stack <float> s;
+	string sup;
+	ifstream f("C:\\test\\Zadacha_3.txt");
+	float n1, n2;
+	while (!f.eof()) {
+		f >> sup;
+		if (sup != "+" && sup != "-" && sup != "*" && sup != "/") {
+			s.push(stoi(sup));
+		}
+		else {
+			n2 = s.top();
+			s.pop();
+			n1 = s.top();
+			s.pop();
+			if (sup == "+") s.push(n1 + n2);
+			else if (sup == "-") s.push(n1 - n2);
+			else if (sup == "*") s.push(n1 * n2);
+			else if (sup == "/") s.push(n1 / n2);
+		}
+	}
+	while (!(s.empty()))
+	{
+		cout << s.top() << endl;
+		s.pop();
+	}
+}
